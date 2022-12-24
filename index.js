@@ -175,3 +175,19 @@ firstGameContainer.appendChild(topGame);
 const runnerUpGame = document.createElement("p");
 runnerUpGame.innerHTML = secondGame.name;
 secondGameContainer.appendChild(runnerUpGame);
+
+/***********************************************************************************
+ * Search Bar Function
+ * Displays specific game based on what user puts in search bar
+ */
+
+function searchGame() {
+    deleteChildElements(gamesContainer);
+
+    let input = document.getElementById("searchbar").value.toLowerCase();
+    const searchGames = GAMES_JSON.filter( (game) => {return game.name.toLowerCase().includes(input);});
+
+    addGamesToPage(searchGames);
+    
+}
+document.getElementById("searchbar").addEventListener("keyup", searchGame);
